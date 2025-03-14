@@ -43,6 +43,10 @@ with app.app_context():
 def home():
     return "Flask App is Running Successfully on Render!"
 
+@app.route("/login")
+def login():
+    return login_bp
+
 # Run the app
 if __name__ == "__main__":
     port = int(os.getenv("PORT", 10000))  # Use Render's PORT environment variable
