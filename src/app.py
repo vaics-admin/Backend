@@ -6,7 +6,7 @@ app = Flask(__name__)
 CORS(app)
 
 # Configure CORS with specific options
-CORS(app, resources={r"/*": {"origins": "http://localhost:3000"}},
+CORS(app, resources={r"/*": {"origins": "https://backend-dnxz.onrender.com"}},
      supports_credentials=True,
      allow_headers=["Content-Type", "Authorization"],
      methods=["GET", "POST", "OPTIONS", "PUT", "DELETE"])
