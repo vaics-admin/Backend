@@ -1,3 +1,4 @@
+import os
 from flask_cors import CORS
 from flask import Flask, render_template, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
@@ -18,29 +19,31 @@ db = SQLAlchemy(app)
 app.config['SESSION_SQLALCHEMY'] = db
 
 # Register blueprints
-
-# Login blueprint
 from .login.route import login_bp
 app.register_blueprint(login_bp, url_prefix='/login')
 
-# Leave management blueprint
 from .leave_management.routes import leave_management_bp
 app.register_blueprint(leave_management_bp, url_prefix='/leave_management')
 
-# PMS employee blueprint
 from .pms_employee.routes import pms_employee_bp
 app.register_blueprint(pms_employee_bp, url_prefix='/pms_employee')
 
-#Employee_profile
 from .employee_profile import employee_profile_bp
 app.register_blueprint(employee_profile_bp, url_prefix='/employee')
 
-
-#Password change
-# Quicklinks - Password Change
 from .quick_links.passwordchange.routes import passwordchange_bp
 app.register_blueprint(passwordchange_bp, url_prefix='/quicklinks/passwordchange')
 
 # Initialize database
 with app.app_context():
     db.create_all()
+
+# Home Route
+@app.route("/")
+def home():
+    return "Flask App is Running Successfully on Render!"
+
+# Run the app
+if __name__ == "__main__":
+    port = int(os.getenv("PORT", 5000))  # Use Render's PORT environment variable
+    app.run(host="0.0.0.0", port=port, debug=True)
