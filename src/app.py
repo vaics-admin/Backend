@@ -19,7 +19,7 @@ db = SQLAlchemy(app)
 app.config['SESSION_SQLALCHEMY'] = db
 
 # Register blueprints
-from .login.route import login_bp
+from src.login.route import login_bp
 app.register_blueprint(login_bp, url_prefix='/login')
 
 from .leave_management.routes import leave_management_bp
