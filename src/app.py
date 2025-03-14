@@ -45,7 +45,7 @@ def home():
 
 @app.route("/login")
 def login():
-    return login_bp
+    return login_bp()
 
 # Run the app
 if __name__ == "__main__":
