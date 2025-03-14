@@ -45,5 +45,5 @@ def home():
 
 # Run the app
 if __name__ == "__main__":
-    port = int(os.getenv("PORT", 5000))  # Use Render's PORT environment variable
+    port = int(os.getenv("PORT", 10000))  # Use Render's PORT environment variable
     app.run(host="0.0.0.0", port=port, debug=True)
